@@ -1,7 +1,6 @@
-_: !include version.yaml
 
 name:             hspec
-version: *version
+version: 2.10.0.1
 copyright:
   - (c) 2011-2022 Simon Hengel
   - (c) 2011-2012 Trystan Spangler
@@ -31,13 +30,13 @@ extra-source-files:
 
 github: hspec/hspec
 
-ghc-options: -Wall
+ghc-options: -Wall -threaded
 
 
 dependencies:
   base: 4.*
-  hspec-core: *version
-  hspec-discover: *version
+  hspec-core: 2.10.0.1
+  hspec-discover: 2.10.0.1
   hspec-expectations: 0.8.2.*
   QuickCheck: ">= 2.12"
 
@@ -49,3 +48,12 @@ library:
     - Test.Hspec.Formatters
     - Test.Hspec.QuickCheck
     - Test.Hspec.Runner
+
+executables:
+  slow:
+    # source-dirs: driver
+    main: Slow.hs
+    dependencies:
+      - hspec
+    # ghc-options:  -fno-ignore-asserts -prof -fprof-auto
+    ghc-options:  -O2 -threaded -fprof-auto "-with-rtsopts=-N -p -s -h -i0.1"

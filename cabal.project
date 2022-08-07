@@ -1,3 +1,4 @@
+profiling: True
 packages:
   hspec.cabal
   hspec-discover

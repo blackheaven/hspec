@@ -1,7 +1,6 @@
-_: !include version.yaml
 
 name: hspec-core
-version: *version
+version: 2.10.0.1
 synopsis: A Testing Framework for Haskell
 description: >
   This package exposes internal types and functions that can be used to extend
@@ -18,10 +17,9 @@ homepage: http://hspec.github.io/
 github: hspec/hspec/hspec-core
 
 extra-source-files:
-  - version.yaml
   - help.txt
 
-ghc-options: -Wall -fno-warn-incomplete-uni-patterns
+ghc-options: -Wall -fno-warn-incomplete-uni-patterns -threaded
 
 dependencies:
   - base >= 4.5.0.0 && < 5
@@ -75,18 +73,18 @@ library:
     - Test.Hspec.Core.QuickCheck
     - Test.Hspec.Core.Util
 
-tests:
-  spec:
-    <<: *stm
-    cpp-options: -DTEST
-    main: Spec.hs
-    source-dirs:
-      - test
-    dependencies:
-      - hspec-meta == 2.9.3
-      - silently >= 1.2.4
-      - QuickCheck >= 2.14
-      - process
-      - temporary
-      - base-orphans
-    build-tools: hspec-meta:hspec-meta-discover
+# tests:
+#   spec:
+#     <<: *stm
+#     cpp-options: -DTEST
+#     main: Spec.hs
+#     source-dirs:
+#       - test
+#     dependencies:
+#       - hspec-meta == 2.9.3
+#       - silently >= 1.2.4
+#       - QuickCheck >= 2.14
+#       - process
+#       - temporary
+#       - base-orphans
+#     build-tools: hspec-meta:hspec-meta-discover
